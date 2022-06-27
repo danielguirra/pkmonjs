@@ -5,7 +5,7 @@ import { getPokemonUrlImages } from './getPokemonUrlImages';
 import { getPokemonWeakeanes } from './getPokemonWeakeanes';
 import { Pokemon, PokemonStatus } from './src/interfaces/Pokemon';
 
-export async function getPokemon(pokemonName: string) {
+export async function getPokemon(pokemonName: string | number) {
   const pokeGet = await axios.get(
     'https://pokeapi.co/api/v2/pokemon/' + pokemonName,
   )

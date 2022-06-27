@@ -91,3 +91,5 @@ export interface PokemonTypesWeakeness {
   noDamageFrom: string | Array<string>
   noDamegeTo: string | Array<string>
 }
+
+export function getPokemon(pokemonName: string | number): Promise<Pokemon>
