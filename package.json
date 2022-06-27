@@ -1,6 +1,6 @@
 {
   "name": "pkmonjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package for use PokeAPi",
   "main": "bin/src/pokemon.js",
   "scripts": {
