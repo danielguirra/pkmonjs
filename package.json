@@ -1,0 +1,23 @@
+{
+  "name": "pkmonjs",
+  "version": "1.0.0",
+  "description": "A package for use PokeAPi",
+  "main": "bin/src/pokemon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielguirra/pkmonjs.git"
+  },
+  "author": "Daniel Guirra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielguirra/pkmonjs/issues"
+  },
+  "homepage": "https://github.com/danielguirra/pkmonjs#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "typescript": "^4.7.4"
+  }
+}
