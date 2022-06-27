@@ -94,4 +94,4 @@ function getPokemon(pokemonName) {
     return pokemon
   })
 }
-exports.getPokemon = getPokemon
+module.exports = { getPokemon }
