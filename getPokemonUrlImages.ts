@@ -1,4 +1,4 @@
-import { PokemonImage } from './interfaces/Pokemon';
+import { PokemonImage } from './src/interfaces/Pokemon';
 
 export function getPokemonUrlImages(pokemon: any): PokemonImage {
   let image: PokemonImage

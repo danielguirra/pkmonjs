@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getPokemonSpecies } from './getPokemonSpecies';
 import { getPokemonUrlImages } from './getPokemonUrlImages';
 import { getPokemonWeakeanes } from './getPokemonWeakeanes';
-import { Pokemon, PokemonStatus } from './interfaces/Pokemon';
+import { Pokemon, PokemonStatus } from './src/interfaces/Pokemon';
 
 export async function getPokemon(pokemonName: string) {
   const pokeGet = await axios.get(

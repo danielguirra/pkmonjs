@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { PokemonTypesWeakeness } from './interfaces/Pokemon';
 import { mergeObjc } from './mergeObjc';
+import { PokemonTypesWeakeness } from './src/interfaces/Pokemon';
 
 export async function getPokemonWeakeanes(types: {
   type1: string

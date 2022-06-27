@@ -1,8 +1,9 @@
 {
   "name": "pkmonjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A package for use PokeAPi",
-  "main": "bin/src/pokemon.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

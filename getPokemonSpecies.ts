@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { pokemonGenderRatio } from './pokemonGenderRatio';
 import {
   PokemonColor,
   PokemonEggGroupArray,
@@ -7,8 +8,7 @@ import {
   PokemonGeneration,
   PokemonHabitat,
   PokemonSpecie,
-} from './interfaces/Pokemon';
-import { pokemonGenderRatio } from './pokemonGenderRatio';
+} from './src/interfaces/Pokemon';
 
 export async function getPokemonSpecies(url: string) {
   const get = await axios.get(url)
