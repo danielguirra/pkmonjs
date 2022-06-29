@@ -49,6 +49,8 @@ export interface PokemonGeneration {
   url: string
 }
 export interface PokemonImage {
+  default: string
+
   UrlMaleOrUndefined: string
   UrlShiny: string
 
@@ -82,6 +84,8 @@ export interface Pokemon {
 }
 
 export interface PokemonTypesWeakeness {
+  name: string | Array<string>
+
   damageDoubleFrom: string | Array<string>
   damageDoubleTo: string | Array<string>
 

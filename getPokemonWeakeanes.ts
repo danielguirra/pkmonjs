@@ -13,6 +13,7 @@ export async function getPokemonWeakeanes(types: {
   else weakness2 = weakness1
 
   const pokeWeak1: PokemonTypesWeakeness = {
+    name: weakness1.data.name,
     damageDoubleFrom: weakness1.data.damage_relations.double_damage_from,
     damageDoubleTo: weakness1.data.damage_relations.double_damage_to,
     halfDamageFrom: weakness1.data.damage_relations.half_damage_from,
@@ -22,6 +23,7 @@ export async function getPokemonWeakeanes(types: {
   }
 
   const pokeWeak2: PokemonTypesWeakeness = {
+    name: weakness2.data.name,
     damageDoubleFrom: weakness2.data.damage_relations.double_damage_from,
     damageDoubleTo: weakness2.data.damage_relations.double_damage_to,
     halfDamageFrom: weakness2.data.damage_relations.half_damage_from,
@@ -31,6 +33,7 @@ export async function getPokemonWeakeanes(types: {
   }
 
   const finalWeak: PokemonTypesWeakeness = {
+    name: mergeObjc(pokeWeak1.name, pokeWeak2.name),
     damageDoubleFrom: mergeObjc(
       pokeWeak1.damageDoubleFrom,
       pokeWeak2.damageDoubleFrom,
