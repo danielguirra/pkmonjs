@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPokemon = void 0;
 const axios_1 = __importDefault(require("axios"));
+const jsdom_1 = require("jsdom");
 const getPokemonSpecies_1 = require("./getPokemonSpecies");
 const getPokemonUrlImages_1 = require("./getPokemonUrlImages");
 const getPokemonWeakeanes_1 = require("./getPokemonWeakeanes");
@@ -28,11 +29,11 @@ function getPokemon(pokemonName) {
         let weak;
         if (pokemonTypes.types.length > 1)
             weak = yield (0, getPokemonWeakeanes_1.getPokemonWeakeanes)({
-                type1: pokemonTypes.types[0].type.url,
-                type2: pokemonTypes.types[1].type.url,
+                type1: pokemonTypes.types[0].type,
+                type2: pokemonTypes.types[1].type,
             });
         else {
-            weak = yield (0, getPokemonWeakeanes_1.getPokemonWeakeanes)({ type1: pokemonTypes.types[0].type.url });
+            weak = yield (0, getPokemonWeakeanes_1.getPokemonWeakeanes)({ type1: pokemonTypes.types[0].type });
         }
         const stats = data.stats;
         const pokemonStatus = {
@@ -48,11 +49,14 @@ function getPokemon(pokemonName) {
         };
         const pokemonImages = (0, getPokemonUrlImages_1.getPokemonUrlImages)(data);
         const specie = yield (0, getPokemonSpecies_1.getPokemonSpecies)(data.species.url);
-        const description = yield axios_1.default.get('https://pokemonapi.danielguirra.repl.co/pokemon/' + data.id);
+        const url = `https://www.pokemon.com/br/pokedex/${data.id}`;
+        const response = yield axios_1.default.get(url);
+        const dom = new jsdom_1.JSDOM(response.data);
+        let curiosity = dom.window.document.querySelector('p').textContent.trim();
         const pokemon = {
             idPokedex: data.id,
             name: data.name,
-            description: description.data.curiosity,
+            description: curiosity,
             sexMalePorcentage: (_a = specie.genderRate) === null || _a === void 0 ? void 0 : _a.male,
             sexFemalePorcentage: (_b = specie.genderRate) === null || _b === void 0 ? void 0 : _b.female,
             undefinedPorcentage: (_c = specie.genderRate) === null || _c === void 0 ? void 0 : _c.undefined,

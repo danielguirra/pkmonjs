@@ -17,14 +17,19 @@ const axios_1 = __importDefault(require("axios"));
 const mergeObjc_1 = require("./mergeObjc");
 function getPokemonWeakeanes(types) {
     return __awaiter(this, void 0, void 0, function* () {
-        let weakness1 = yield axios_1.default.get(types.type1);
+        let type1 = types.type1.name;
+        let type2;
+        let weakness1 = yield axios_1.default.get(types.type1.url);
         let weakness2;
-        if (types.type2)
-            weakness2 = yield axios_1.default.get(types.type2);
-        else
+        if (types.type2) {
+            weakness2 = yield axios_1.default.get(types.type2.url);
+            type2 = types.type2.name;
+        }
+        else {
             weakness2 = weakness1;
+            type2 = null;
+        }
         const pokeWeak1 = {
-            name: weakness1.data.name,
             damageDoubleFrom: weakness1.data.damage_relations.double_damage_from,
             damageDoubleTo: weakness1.data.damage_relations.double_damage_to,
             halfDamageFrom: weakness1.data.damage_relations.half_damage_from,
@@ -33,7 +38,6 @@ function getPokemonWeakeanes(types) {
             noDamegeTo: weakness1.data.damage_relations.no_damage_to,
         };
         const pokeWeak2 = {
-            name: weakness2.data.name,
             damageDoubleFrom: weakness2.data.damage_relations.double_damage_from,
             damageDoubleTo: weakness2.data.damage_relations.double_damage_to,
             halfDamageFrom: weakness2.data.damage_relations.half_damage_from,
@@ -42,7 +46,6 @@ function getPokemonWeakeanes(types) {
             noDamegeTo: weakness2.data.damage_relations.no_damage_to,
         };
         const finalWeak = {
-            name: (0, mergeObjc_1.mergeObjc)(pokeWeak1.name, pokeWeak2.name),
             damageDoubleFrom: (0, mergeObjc_1.mergeObjc)(pokeWeak1.damageDoubleFrom, pokeWeak2.damageDoubleFrom),
             damageDoubleTo: (0, mergeObjc_1.mergeObjc)(pokeWeak1.damageDoubleTo, pokeWeak2.damageDoubleTo),
             halfDamageFrom: (0, mergeObjc_1.mergeObjc)(pokeWeak1.halfDamageFrom, pokeWeak2.halfDamageFrom),
@@ -50,7 +53,11 @@ function getPokemonWeakeanes(types) {
             noDamageFrom: (0, mergeObjc_1.mergeObjc)(pokeWeak1.noDamageFrom, pokeWeak2.noDamageFrom),
             noDamegeTo: (0, mergeObjc_1.mergeObjc)(pokeWeak1.noDamegeTo, pokeWeak2.noDamegeTo),
         };
-        return finalWeak;
+        const finaltypes = {
+            name: { type1, type2 },
+            weakness: finalWeak,
+        };
+        return finaltypes;
     });
 }
 exports.getPokemonWeakeanes = getPokemonWeakeanes;

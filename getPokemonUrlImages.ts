@@ -5,7 +5,7 @@ export function getPokemonUrlImages(pokemon: any): PokemonImage {
 
   const defaultFront = pokemon.sprites.front_default
   const defaultShinyFront = pokemon.sprites.front_shiny
-  let num = pokemon.id
+  let num = pokemon.id.toString()
   if (num.length < 2) num = '00' + num
   if (num.length > 1 && num.length < 3) num = '0' + num
   if (pokemon.sprites.front_female != null) {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { JSDOM } from 'jsdom';
 
 import { getPokemonSpecies } from './getPokemonSpecies';
 import { getPokemonUrlImages } from './getPokemonUrlImages';
@@ -20,7 +21,7 @@ export async function getPokemon(pokemonName: string | number) {
       type2: pokemonTypes.types[1].type,
     })
   else {
-    weak = await getPokemonWeakeanes({ type1: pokemonTypes.types[0].type.url })
+    weak = await getPokemonWeakeanes({ type1: pokemonTypes.types[0].type })
   }
 
   const stats = data.stats
@@ -39,13 +40,14 @@ export async function getPokemon(pokemonName: string | number) {
 
   const pokemonImages = getPokemonUrlImages(data)
   const specie = await getPokemonSpecies(data.species.url)
-  const description = await axios.get(
-    'https://pokemonapi.danielguirra.repl.co/pokemon/' + data.id,
-  )
+  const url = `https://www.pokemon.com/br/pokedex/${data.id}`
+  const response = await axios.get(url)
+  const dom: any = new JSDOM(response.data)
+  let curiosity = dom.window.document.querySelector('p').textContent.trim()
   const pokemon: Pokemon = {
     idPokedex: data.id,
     name: data.name,
-    description: description.data.curiosity,
+    description: curiosity,
     sexMalePorcentage: specie.genderRate?.male,
     sexFemalePorcentage: specie.genderRate?.female,
     undefinedPorcentage: specie.genderRate?.undefined,

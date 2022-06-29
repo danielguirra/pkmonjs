@@ -57,42 +57,32 @@ Response Exemple
 
 ```JS
   {
-  idPokedex: 25,
-  name: 'pikachu',
-  sexMalePorcentage: 50,
-  sexFemalePorcentage: 50,
+  idPokedex: 1,
+  name: 'bulbasaur',
+  description: 'While it is young, it uses the nutrients that are stored in the seed on its back in order to grow.',
+  sexMalePorcentage: 100,
+  sexFemalePorcentage: 0,
   undefinedPorcentage: 0,
   stats: {
-    hp: 35,
-    attack: 55,
-    defense: 40,
-    specialAttack: 50,
-    specialDefense: 50,
-    speed: 90,
-    height: 4,
-    weight: 60,
-    types: {
-      damageDoubleFrom: [Array],
-      damageDoubleTo: [Array],
-      halfDamageFrom: [Array],
-      halfDamageTo: [Array],
-      noDamageFrom: [],
-      noDamegeTo: [Array]
-    }
+    hp: 45,
+    attack: 49,
+    defense: 49,
+    specialAttack: 65,
+    specialDefense: 65,
+    speed: 45,
+    height: 7,
+    weight: 69,
+    types: { name: [Object], weakness: [Object] }
   },
   image: {
-    UrlMaleOrUndefined: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-    UrlShiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png',
-    UrlFemale: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/female/25.png',
-    UrlShinyFemale: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/female/25.png'
+    default: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+    UrlMaleOrUndefined: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+    UrlShiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png'
   },
-  color: {
-    name: 'yellow',
-    url: 'https://pokeapi.co/api/v2/pokemon-color/10/'
-  },
+  color: { name: 'green', url: 'https://pokeapi.co/api/v2/pokemon-color/5/' },
   habitat: {
-    name: 'forest',
-    url: 'https://pokeapi.co/api/v2/pokemon-habitat/2/'
+    name: 'grassland',
+    url: 'https://pokeapi.co/api/v2/pokemon-habitat/3/'
   },
   generation: {
     name: 'generation-i',

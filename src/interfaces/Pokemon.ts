@@ -71,7 +71,6 @@ export interface Pokemon {
   idPokedex: string
   name: string
   description: string
-
   color: PokemonColor
   habitat: PokemonHabitat
   generation: PokemonGeneration
