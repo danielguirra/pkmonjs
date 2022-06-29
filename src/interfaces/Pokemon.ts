@@ -63,13 +63,14 @@ export interface PokemonTypeArray {
 }
 
 export interface PokemonType {
-  name: string
-  weakness: string | Array<string>
+  name: object
+  weakness: PokemonTypesWeakeness
 }
 
 export interface Pokemon {
   idPokedex: string
   name: string
+  description: string
 
   color: PokemonColor
   habitat: PokemonHabitat
@@ -84,8 +85,6 @@ export interface Pokemon {
 }
 
 export interface PokemonTypesWeakeness {
-  name: string | Array<string>
-
   damageDoubleFrom: string | Array<string>
   damageDoubleTo: string | Array<string>
 

@@ -16,8 +16,8 @@ export async function getPokemon(pokemonName: string | number) {
   let weak
   if (pokemonTypes.types.length > 1)
     weak = await getPokemonWeakeanes({
-      type1: pokemonTypes.types[0].type.url,
-      type2: pokemonTypes.types[1].type.url,
+      type1: pokemonTypes.types[0].type,
+      type2: pokemonTypes.types[1].type,
     })
   else {
     weak = await getPokemonWeakeanes({ type1: pokemonTypes.types[0].type.url })
@@ -39,9 +39,13 @@ export async function getPokemon(pokemonName: string | number) {
 
   const pokemonImages = getPokemonUrlImages(data)
   const specie = await getPokemonSpecies(data.species.url)
+  const description = await axios.get(
+    'https://pokemonapi.danielguirra.repl.co/pokemon/' + data.id,
+  )
   const pokemon: Pokemon = {
     idPokedex: data.id,
     name: data.name,
+    description: description.data.curiosity,
     sexMalePorcentage: specie.genderRate?.male,
     sexFemalePorcentage: specie.genderRate?.female,
     undefinedPorcentage: specie.genderRate?.undefined,

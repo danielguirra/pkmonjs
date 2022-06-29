@@ -1,19 +1,23 @@
 import axios from 'axios';
 
 import { mergeObjc } from './mergeObjc';
-import { PokemonTypesWeakeness } from './src/interfaces/Pokemon';
+import { PokemonType, PokemonTypesWeakeness } from './src/interfaces/Pokemon';
 
-export async function getPokemonWeakeanes(types: {
-  type1: string
-  type2?: string
-}) {
-  let weakness1 = await axios.get(types.type1)
+export async function getPokemonWeakeanes(types: { type1: any; type2?: any }) {
+  let type1 = types.type1.name
+  let type2
+  let weakness1 = await axios.get(types.type1.url)
   let weakness2
-  if (types.type2) weakness2 = await axios.get(types.type2)
-  else weakness2 = weakness1
+
+  if (types.type2) {
+    weakness2 = await axios.get(types.type2.url)
+    type2 = types.type2.name
+  } else {
+    weakness2 = weakness1
+    type2 = null
+  }
 
   const pokeWeak1: PokemonTypesWeakeness = {
-    name: weakness1.data.name,
     damageDoubleFrom: weakness1.data.damage_relations.double_damage_from,
     damageDoubleTo: weakness1.data.damage_relations.double_damage_to,
     halfDamageFrom: weakness1.data.damage_relations.half_damage_from,
@@ -23,7 +27,6 @@ export async function getPokemonWeakeanes(types: {
   }
 
   const pokeWeak2: PokemonTypesWeakeness = {
-    name: weakness2.data.name,
     damageDoubleFrom: weakness2.data.damage_relations.double_damage_from,
     damageDoubleTo: weakness2.data.damage_relations.double_damage_to,
     halfDamageFrom: weakness2.data.damage_relations.half_damage_from,
@@ -33,7 +36,6 @@ export async function getPokemonWeakeanes(types: {
   }
 
   const finalWeak: PokemonTypesWeakeness = {
-    name: mergeObjc(pokeWeak1.name, pokeWeak2.name),
     damageDoubleFrom: mergeObjc(
       pokeWeak1.damageDoubleFrom,
       pokeWeak2.damageDoubleFrom,
@@ -51,5 +53,10 @@ export async function getPokemonWeakeanes(types: {
     noDamegeTo: mergeObjc(pokeWeak1.noDamegeTo, pokeWeak2.noDamegeTo),
   }
 
-  return finalWeak
+  const finaltypes: PokemonType = {
+    name: { type1, type2 },
+    weakness: finalWeak,
+  }
+
+  return finaltypes
 }
