@@ -75,9 +75,9 @@ export interface Pokemon {
   habitat: PokemonHabitat
   generation: PokemonGeneration
 
-  sexMalePorcentage: string | number
-  sexFemalePorcentage: string | number
-  undefinedPorcentage: string | number
+  sexMalePorcentage: string | number | undefined
+  sexFemalePorcentage: string | number | undefined
+  undefinedPorcentage: string | number | undefined
 
   stats: PokemonStatus
   image: PokemonImage
