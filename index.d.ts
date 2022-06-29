@@ -49,6 +49,8 @@ export interface PokemonGeneration {
   url: string
 }
 export interface PokemonImage {
+  default: string
+
   UrlMaleOrUndefined: string
   UrlShiny: string
 
@@ -61,21 +63,23 @@ export interface PokemonTypeArray {
 }
 
 export interface PokemonType {
-  name: string
-  weakness: string | Array<string>
+  name: object
+  weakness: PokemonTypesWeakeness
 }
+
+export function getPokemon(pokemonName: string | number): Promise<Pokemon>
 
 export interface Pokemon {
   idPokedex: string
   name: string
-
+  description: string
   color: PokemonColor
   habitat: PokemonHabitat
   generation: PokemonGeneration
 
-  sexMalePorcentage: string | number
-  sexFemalePorcentage: string | number
-  undefinedPorcentage: string | number
+  sexMalePorcentage: string | number | undefined
+  sexFemalePorcentage: string | number | undefined
+  undefinedPorcentage: string | number | undefined
 
   stats: PokemonStatus
   image: PokemonImage
@@ -91,5 +95,3 @@ export interface PokemonTypesWeakeness {
   noDamageFrom: string | Array<string>
   noDamegeTo: string | Array<string>
 }
-
-export function getPokemon(pokemonName: string | number): Promise<Pokemon>
