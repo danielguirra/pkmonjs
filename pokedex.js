@@ -82,9 +82,9 @@ function getPokemon(pokemonName) {
     const pokemon = {
       idPokedex: data.id,
       name: data.name,
-      sexMalePorcentage: specie.genderRate.male,
-      sexFemalePorcentage: specie.genderRate.female,
-      undefinedPorcentage: specie.genderRate.undefined,
+      sexMalePorcentage: specie.genderRate?.male,
+      sexFemalePorcentage: specie.genderRate?.female,
+      undefinedPorcentage: specie.genderRate?.undefined,
       stats: pokemonStatus,
       image: pokemonImages,
       color: specie.color,
