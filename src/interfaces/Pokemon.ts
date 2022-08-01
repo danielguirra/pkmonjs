@@ -7,12 +7,7 @@ export interface PokemonStatus {
   speed: string
   height: string
   weight: string
-  types:
-    | PokemonTypeArray
-    | PokemonType
-    | PokemonTypesWeakeness
-    | PokemonTypeC
-    | undefined
+  types: PokemonType | PokemonTypeC
 }
 export interface PokemonGenderRatio {
   male: number

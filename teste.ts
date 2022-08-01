@@ -1,3 +1,7 @@
 import { getPokemon } from './pokedex';
 
-getPokemon(1).then((f) => console.log(f))
+getPokemon(25).then((f) => {
+  if (f) {
+    console.log(f.stats.types.name)
+  }
+})
