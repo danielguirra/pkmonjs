@@ -1,6 +1,6 @@
 {
   "name": "pkmonjs",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "A package for use PokeAPi",
   "main": "index.js",
   "types": "index.d.ts",
