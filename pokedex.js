@@ -31,7 +31,6 @@ function getPokemon(pokemonName) {
         catch (error) {
             const pokeGet = yield axios_1.default.get('https://pokeapi.co/api/v2/pokemon/' + pokemonName);
             data = pokeGet.data;
-            fs_1.default.writeFileSync('cache.json', JSON.stringify(data), 'utf-8');
             const pokemonTypes = data.types;
             let weak = yield (0, getPokemonWeakeanes_1.getPokemonWeakeanes)(pokemonTypes);
             if (weak) {

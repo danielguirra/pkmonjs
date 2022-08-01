@@ -1,3 +1,6 @@
+export function getPokemon(pokemonName: string | number): Promise<Pokemon>
+export function getAllPokemon(): Promise<Array<Pokemon>>
+export function getAllPokemonNames(): Promise<Array<PokemonNames>>
 export interface PokemonStatus {
   hp: string
   attack: string
@@ -67,11 +70,7 @@ export interface PokemonType {
   weakness: PokemonTypesWeakeness
   url?: string
 }
-export interface PokemonTypeC {
-  name: Array<PokemonTypeNames>
-  weakness: PokemonTypesWeakeness
-  url?: string
-}
+
 export interface PokemonTypeSlot {
   slot: string
   type: PokemonType
@@ -120,6 +119,3 @@ export interface PokemonNames {
   idPokedex: string
   pokemonName: string
 }
-export function getPokemon(pokemonName: string | number): Promise<Pokemon>
-export function getAllPokemon(): Promise<Array<Pokemon>>
-export function getAllPokemonNames(): Promise<Array<PokemonNames>>

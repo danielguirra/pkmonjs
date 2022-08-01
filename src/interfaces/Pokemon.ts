@@ -67,11 +67,7 @@ export interface PokemonType {
   weakness: PokemonTypesWeakeness
   url?: string
 }
-export interface PokemonTypeC {
-  name: Array<PokemonTypeNames>
-  weakness: PokemonTypesWeakeness
-  url?: string
-}
+
 export interface PokemonTypeSlot {
   slot: string
   type: PokemonType

@@ -25,17 +25,18 @@ function getPokemonWeakeanes(types) {
         let weakness1;
         if (type1.url) {
             weakness1 = yield axios_1.default.get(type1.url);
-            names = type1.name;
+            names.type1 = type1.name;
         }
         let weakness2;
         if (types[1] && types[1].type.url) {
             weakness2 = yield axios_1.default.get(types[1].type.url);
             type2 = types[1].type;
-            names = type2.name;
+            names.type2 = type2.name;
         }
         else {
             weakness2 = weakness1;
-            type2 = null;
+            type2 = undefined;
+            names.type2 = type2;
         }
         if (weakness1) {
             const pokeWeak1 = {

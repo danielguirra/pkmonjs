@@ -22,7 +22,6 @@ export async function getPokemon(pokemonName: string | number) {
       'https://pokeapi.co/api/v2/pokemon/' + pokemonName,
     )
     data = pokeGet.data
-    fs.writeFileSync('cache.json', JSON.stringify(data), 'utf-8')
     const pokemonTypes: Array<PokemonTypeSlot> = data.types
     let weak = await getPokemonWeakeanes(pokemonTypes)
 

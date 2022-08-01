@@ -1,27 +1,28 @@
 import axios from 'axios';
 
 import { mergeObjc } from './mergeObjc';
-import { PokemonType, PokemonTypeNames, PokemonTypeSlot, PokemonTypesWeakeness } from './src/interfaces/Pokemon';
+import { PokemonType, PokemonTypeSlot, PokemonTypesWeakeness } from './src/interfaces/Pokemon';
 
 export async function getPokemonWeakeanes(types: Array<PokemonTypeSlot>) {
   let type1 = types[0].type
   let type2
-  let names: PokemonTypeNames = {
+  let names: any = {
     type1: '',
   }
   let weakness1
   if (type1.url) {
     weakness1 = await axios.get(type1.url)
-    names = type1.name
+    names.type1 = type1.name
   }
   let weakness2
   if (types[1] && types[1].type.url) {
     weakness2 = await axios.get(types[1].type.url)
     type2 = types[1].type
-    names = type2.name
+    names.type2 = type2.name
   } else {
     weakness2 = weakness1
-    type2 = null
+    type2 = undefined
+    names.type2 = type2
   }
   if (weakness1) {
     const pokeWeak1: PokemonTypesWeakeness = {
