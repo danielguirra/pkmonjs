@@ -30,13 +30,21 @@ JavaScript
 
 ```JS
 
-    const {getPokemon} = require('pkmonjs')
+    const {getPokemon,getAllPokemon,getAllPokemonNames} = require('pkmonjs')
 
-    const poke = getPokemon('pikachu')
-    .then((f)=>
-    {
-    if(f) console.log(f)
-    })
+    const poke = getPokemon('pikachu').then((f)=>
+     {
+        if(f) {
+          console.log(f)
+        }
+     }
+    )
+    //or
+    const poke =await getPokemon('pikachu')
+
+    const names=await getAllPokemonNames()
+
+    const pokes=await getAllPokemonNames()
 
 ```
 
@@ -44,50 +52,86 @@ TypeScript
 
 ```TS
 
-    import getPokemon from 'pkmonjs'
+    import {
+      getPokemon,
+      getAllPokemon,
+      getAllPokemonNames,
+      Pokemon,
+      PokemonNamesArray,
+      PokemonArray }
+    from 'pkmonjs';
 
-    const poke = getPokemon('pikachu')
-    .then((f)=>
-    {
-    if(f) console.log(f)
-    })
+    const poke:Pokemon = getPokemon('pikachu').then((f)=>
+     {
+        if(f) {
+          console.log(f)
+        }
+     }
+    )
+    //or user await
+    const poke:Pokemon =await getPokemon('pikachu')
+
+    const names:PokemonNamesArray=await getAllPokemonNames()
+
+    const pokes:PokemonArray=await getAllPokemonNames()
 ```
 
 Response Exemple
 
 ```JS
-  {
-  idPokedex: 1,
-  name: 'bulbasaur',
-  description: 'While it is young, it uses the nutrients that are stored in the seed on its back in order to grow.',
-  sexMalePorcentage: 85,
-  sexFemalePorcentage: 15,
-  undefinedPorcentage: 0,
-  stats: {
-    hp: 45,
-    attack: 49,
-    defense: 49,
-    specialAttack: 65,
-    specialDefense: 65,
-    speed: 45,
-    height: 7,
-    weight: 69,
-    types: { name: [Array], weakness: [Object] }
-  },
-  image: {
-    default: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
-    UrlMaleOrUndefined: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    UrlShiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png'
-  },
-  color: { name: 'green', url: 'https://pokeapi.co/api/v2/pokemon-color/5/' },
-  habitat: {
-    name: 'grassland',
-    url: 'https://pokeapi.co/api/v2/pokemon-habitat/3/'
-  },
-  generation: {
-    name: 'generation-i',
-    url: 'https://pokeapi.co/api/v2/generation/1/'
-  }
+
+    Pokemon{
+        idPokedex: 1,
+        name: 'bulbasaur',
+        description: 'While it is young, it uses the nutrients that are stored in the seed on its back in order to grow.',
+        sexMalePorcentage: 85,
+        sexFemalePorcentage: 15,
+        undefinedPorcentage: 0,
+        stats: {
+          hp: 45,
+          attack: 49,
+          defense: 49,
+          specialAttack: 65,
+          specialDefense: 65,
+          speed: 45,
+          height: 7,
+          weight: 69,
+          types: {
+            name: [Array],
+            weakness: [Object]
+            }
+        },
+        image: {
+          default: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+            UrlMaleOrUndefined: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+            UrlShiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png'
+        },
+        color: {
+          name: 'green',
+          url: 'https://pokeapi.co/api/v2/pokemon-color/5/'
+          },
+        habitat: {
+          name: 'grassland',
+          url: 'https://pokeapi.co/api/v2/pokemon-habitat/3/'
+        },
+        generation: {
+          name: 'generation-i',
+          url: 'https://pokeapi.co/api/v2/generation/1/'
+        }
 }
+
+  Names{
+      { "idPokedex": 1, "pokemonName": "bulbasaur" },
+      { "idPokedex": 2, "pokemonName": "ivysaur" },
+      { "idPokedex": 3, "pokemonName": "venusaur" },
+      { "idPokedex": 4, "pokemonName": "charmander" },
+      ...
+  }
+
+  Pokemons{
+    Pokemon{},
+    Pokemon{},
+    Pokemon{}
+  }
 
 ```
