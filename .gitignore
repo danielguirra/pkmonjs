@@ -11,5 +11,6 @@
 #.pnp.*
 
 .env
+cache.json
 node_modules
 

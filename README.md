@@ -60,8 +60,8 @@ Response Exemple
   idPokedex: 1,
   name: 'bulbasaur',
   description: 'While it is young, it uses the nutrients that are stored in the seed on its back in order to grow.',
-  sexMalePorcentage: 100,
-  sexFemalePorcentage: 0,
+  sexMalePorcentage: 85,
+  sexFemalePorcentage: 15,
   undefinedPorcentage: 0,
   stats: {
     hp: 45,
@@ -72,7 +72,7 @@ Response Exemple
     speed: 45,
     height: 7,
     weight: 69,
-    types: { name: [Object], weakness: [Object] }
+    types: { name: [Array], weakness: [Object] }
   },
   image: {
     default: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',

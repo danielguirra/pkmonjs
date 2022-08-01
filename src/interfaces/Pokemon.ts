@@ -7,7 +7,12 @@ export interface PokemonStatus {
   speed: string
   height: string
   weight: string
-  types: PokemonTypeArray | PokemonType | PokemonTypesWeakeness
+  types:
+    | PokemonTypeArray
+    | PokemonType
+    | PokemonTypesWeakeness
+    | PokemonTypeC
+    | undefined
 }
 export interface PokemonGenderRatio {
   male: number
@@ -63,8 +68,18 @@ export interface PokemonTypeArray {
 }
 
 export interface PokemonType {
-  name: object
+  name: PokemonTypeNames
   weakness: PokemonTypesWeakeness
+  url?: string
+}
+export interface PokemonTypeC {
+  name: Array<PokemonTypeNames>
+  weakness: PokemonTypesWeakeness
+  url?: string
+}
+export interface PokemonTypeSlot {
+  slot: string
+  type: PokemonType
 }
 
 export interface Pokemon {
@@ -92,4 +107,21 @@ export interface PokemonTypesWeakeness {
 
   noDamageFrom: string | Array<string>
   noDamegeTo: string | Array<string>
+}
+
+export interface PokemonTypeNames {
+  type1: string
+  type2?: string
+}
+
+export interface PokemonNamesArray {
+  poke: Array<PokemonNames>
+}
+export interface PokemonArray {
+  poke: Array<Pokemon>
+}
+
+export interface PokemonNames {
+  idPokedex: string
+  pokemonName: string
 }
