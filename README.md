@@ -39,7 +39,7 @@ JavaScript
         }
      }
     )
-    //or
+    //or use await
     const poke =await getPokemon('pikachu')
 
     const names=await getAllPokemonNames()
@@ -68,7 +68,7 @@ TypeScript
         }
      }
     )
-    //or user await
+    //or use await
     const poke:Pokemon =await getPokemon('pikachu')
 
     const names:PokemonNamesArray=await getAllPokemonNames()
@@ -129,9 +129,10 @@ Response Exemple
   }
 
   Pokemons{
-    Pokemon{},
-    Pokemon{},
-    Pokemon{}
+    Pokemon,
+    Pokemon,
+    Pokemon
+    ...
   }
 
 ```
