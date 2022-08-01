@@ -1,5 +1,5 @@
 {
-  "name": "pkmonjs",
+  "name": "@danielguirra/pkmonjs",
   "version": "1.2.7",
   "description": "A package for use PokeAPi",
   "main": "index.js",
