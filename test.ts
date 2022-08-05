@@ -1,9 +1,9 @@
 import { getPokemon } from './pokedex'
 
-getPokemon(25).then((f) => {
+export const test = getPokemon(25).then((f) => {
   if (f) {
-    console.log(true)
+    console.log('Thanks For Install PkmonJs !!!😁')
   } else {
-    console.log(false)
+    console.log('Erro in install')
   }
 })
