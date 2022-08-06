@@ -1,4 +1,5 @@
 # PkmonJs
+[![Build Status](https://app.travis-ci.com/danielguirra/pkmonjs.svg?branch=main)](https://app.travis-ci.com/danielguirra/pkmonjs)
 [![npm](https://img.shields.io/npm/v/pkmonjs.svg)](https://www.npmjs.com/package/pkmonjs)
 [![npm](https://img.shields.io/npm/dt/pkmonjs.svg)](https://www.npmjs.com/package/pkmonjs)
 
