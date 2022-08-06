@@ -1,5 +1,7 @@
 # PkmonJs
-
+============
+[![npm](https://img.shields.io/npm/v/pokemon-gif.svg)](https://www.npmjs.com/package/pkmonjs)
+[![npm](https://img.shields.io/npm/dt/pokemon-gif.svg)](https://www.npmjs.com/package/pkmonjs)
 A package to use the PokeApi
 
 ## Author
