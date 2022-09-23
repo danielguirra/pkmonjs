@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -19,17 +42,19 @@ const jsdom_1 = require("jsdom");
 const getPokemonSpecies_1 = require("./getPokemonSpecies");
 const getPokemonUrlImages_1 = require("./getPokemonUrlImages");
 const getPokemonWeakeanes_1 = require("./getPokemonWeakeanes");
+const pokekex = __importStar(require("./src/data/pokedex.json"));
+const pokedexNames_json_1 = __importDefault(require("./src/data/pokedexNames.json"));
 function getPokemon(pokemonName) {
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         let data;
         try {
-            data = JSON.parse(fs_1.default.readFileSync('./src/data/pokedex.json', 'utf-8'));
+            data = JSON.parse(fs_1.default.readFileSync("./src/data/pokedex.json", "utf-8"));
             let dataFind = data.find((pokeany) => pokeany.idPokedex === pokemonName || pokeany.name === pokemonName);
             return dataFind;
         }
         catch (error) {
-            const pokeGet = yield axios_1.default.get('https://pokeapi.co/api/v2/pokemon/' + pokemonName);
+            const pokeGet = yield axios_1.default.get("https://pokeapi.co/api/v2/pokemon/" + pokemonName);
             data = pokeGet.data;
             const pokemonTypes = data.types;
             let weak = yield (0, getPokemonWeakeanes_1.getPokemonWeakeanes)(pokemonTypes);
@@ -51,7 +76,7 @@ function getPokemon(pokemonName) {
                 const url = `https://www.pokemon.com/br/pokedex/${data.id}`;
                 const response = yield axios_1.default.get(url);
                 const dom = new jsdom_1.JSDOM(response.data);
-                let curiosity = dom.window.document.querySelector('p').textContent.trim();
+                let curiosity = dom.window.document.querySelector("p").textContent.trim();
                 const pokemon = {
                     idPokedex: data.id,
                     name: data.name,
@@ -72,12 +97,14 @@ function getPokemon(pokemonName) {
 }
 exports.getPokemon = getPokemon;
 function getAllPokemonNames() {
-    const poke = JSON.parse(fs_1.default.readFileSync('./src/data/pokedexNames.json', 'utf-8'));
-    return poke;
+    const poke = pokedexNames_json_1.default;
+    const pokes = poke;
+    return pokes;
 }
 exports.getAllPokemonNames = getAllPokemonNames;
 function getAllPokemon() {
-    const poke = JSON.parse(fs_1.default.readFileSync('./src/data/pokedex.json', 'utf-8'));
-    return poke;
+    const poke = pokekex;
+    const pokes = poke;
+    return pokes;
 }
 exports.getAllPokemon = getAllPokemon;

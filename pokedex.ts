@@ -5,28 +5,30 @@ import { JSDOM } from 'jsdom';
 import { getPokemonSpecies } from './getPokemonSpecies';
 import { getPokemonUrlImages } from './getPokemonUrlImages';
 import { getPokemonWeakeanes } from './getPokemonWeakeanes';
+import * as pokekex from './src/data/pokedex.json';
+import pokemonNames from './src/data/pokedexNames.json';
 import { Pokemon, PokemonArray, PokemonNamesArray, PokemonStatus, PokemonTypeSlot } from './src/interfaces/Pokemon';
 
 export async function getPokemon(pokemonName: string | number) {
-  let data
+  let data;
   try {
-    data = JSON.parse(fs.readFileSync('./src/data/pokedex.json', 'utf-8'))
+    data = JSON.parse(fs.readFileSync("./src/data/pokedex.json", "utf-8"));
     let dataFind: Pokemon = data.find(
       (pokeany: Pokemon) =>
-        pokeany.idPokedex === pokemonName || pokeany.name === pokemonName,
-    )
+        pokeany.idPokedex === pokemonName || pokeany.name === pokemonName
+    );
 
-    return dataFind
+    return dataFind;
   } catch (error) {
     const pokeGet = await axios.get(
-      'https://pokeapi.co/api/v2/pokemon/' + pokemonName,
-    )
-    data = pokeGet.data
-    const pokemonTypes: Array<PokemonTypeSlot> = data.types
-    let weak = await getPokemonWeakeanes(pokemonTypes)
+      "https://pokeapi.co/api/v2/pokemon/" + pokemonName
+    );
+    data = pokeGet.data;
+    const pokemonTypes: Array<PokemonTypeSlot> = data.types;
+    let weak = await getPokemonWeakeanes(pokemonTypes);
 
     if (weak) {
-      const stats = data.stats
+      const stats = data.stats;
 
       const pokemonStatus: PokemonStatus = {
         hp: stats[0].base_stat,
@@ -38,14 +40,14 @@ export async function getPokemon(pokemonName: string | number) {
         height: data.height,
         weight: data.weight,
         types: weak,
-      }
+      };
 
-      const pokemonImages = getPokemonUrlImages(data)
-      const specie = await getPokemonSpecies(data.species.url)
-      const url = `https://www.pokemon.com/br/pokedex/${data.id}`
-      const response = await axios.get(url)
-      const dom: any = new JSDOM(response.data)
-      let curiosity = dom.window.document.querySelector('p').textContent.trim()
+      const pokemonImages = getPokemonUrlImages(data);
+      const specie = await getPokemonSpecies(data.species.url);
+      const url = `https://www.pokemon.com/br/pokedex/${data.id}`;
+      const response = await axios.get(url);
+      const dom: any = new JSDOM(response.data);
+      let curiosity = dom.window.document.querySelector("p").textContent.trim();
       const pokemon: Pokemon = {
         idPokedex: data.id,
         name: data.name,
@@ -58,23 +60,19 @@ export async function getPokemon(pokemonName: string | number) {
         color: specie.color,
         habitat: specie.habitat,
         generation: specie.generation,
-      }
+      };
 
-      return pokemon
+      return pokemon;
     }
   }
 }
 export function getAllPokemonNames() {
-  const poke: PokemonNamesArray = JSON.parse(
-    fs.readFileSync('./src/data/pokedexNames.json', 'utf-8'),
-  )
-
-  return poke
+  const poke: any = pokemonNames;
+  const pokes: PokemonNamesArray = poke;
+  return pokes;
 }
 export function getAllPokemon() {
-  const poke: PokemonArray = JSON.parse(
-    fs.readFileSync('./src/data/pokedex.json', 'utf-8'),
-  )
-
-  return poke
+  const poke: any = pokekex;
+  const pokes: PokemonArray = poke;
+  return pokes;
 }
