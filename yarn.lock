@@ -315,14 +315,6 @@
   dependencies:
     "entities" "^4.3.0"
 
-"pkmonjs@^1.2.17":
-  "integrity" "sha512-4N0mZJ+hmS6oLvmalBjNpmwvBLyCM2uxYrKPu0Z5m2tVZRwXJcq3b9Jl8dHf0GBJ4MH4pbkZJEcF4YnezQq3RQ=="
-  "resolved" "https://registry.npmjs.org/pkmonjs/-/pkmonjs-1.2.17.tgz"
-  "version" "1.2.17"
-  dependencies:
-    "axios" "^0.27.2"
-    "jsdom" "^20.0.0"
-
 "prelude-ls@~1.1.2":
   "integrity" "sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w=="
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.1.2.tgz"

@@ -1,6 +1,6 @@
 {
   "name": "pkmonjs",
-  "version": "1.2.18",
+  "version": "1.3.0",
   "description": "A package for use PokeAPi",
   "main": "index.js",
   "types": "index.d.ts",
@@ -20,8 +20,7 @@
   "homepage": "https://github.com/danielguirra/pkmonjs#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "jsdom": "^20.0.0",
-    "pkmonjs": "^1.2.17"
+    "jsdom": "^20.0.0"
   },
   "devDependencies": {
     "@types/jsdom": "^16.2.14",
