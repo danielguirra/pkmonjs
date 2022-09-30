@@ -1,6 +1,6 @@
 export function getPokemon(pokemonName: string | number): Promise<Pokemon>;
-export function getAllPokemon(): Promise<Array<Pokemon>>;
-export function getAllPokemonNames(): Promise<Array<PokemonNames>>;
+export function getAllPokemon(): Array<Pokemon>;
+export function getAllPokemonNames(): Array<PokemonNames>;
 export interface PokemonStatus {
   hp: string;
   attack: string;
