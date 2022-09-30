@@ -7,9 +7,9 @@ function getPokemonUrlImages(pokemon) {
     const defaultShinyFront = pokemon.sprites.front_shiny;
     let num = pokemon.id.toString();
     if (num.length < 2)
-        num = '00' + num;
+        num = "00" + num;
     if (num.length > 1 && num.length < 3)
-        num = '0' + num;
+        num = "0" + num;
     if (pokemon.sprites.front_female != null) {
         const femaleFront = pokemon.sprites.front_female;
         const femaleShinyFront = pokemon.sprites.front_shiny_female;
@@ -30,3 +30,4 @@ function getPokemonUrlImages(pokemon) {
     return image;
 }
 exports.getPokemonUrlImages = getPokemonUrlImages;
+//# sourceMappingURL=getPokemonUrlImages.js.map

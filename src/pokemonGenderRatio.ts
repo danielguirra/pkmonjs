@@ -39,4 +39,4 @@ export const pokemonGenderRatio = [
     female: 0,
     undefined: 100,
   },
-]
+];

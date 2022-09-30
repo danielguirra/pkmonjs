@@ -43,3 +43,4 @@ exports.pokemonGenderRatio = [
         undefined: 100,
     },
 ];
+//# sourceMappingURL=pokemonGenderRatio.js.map

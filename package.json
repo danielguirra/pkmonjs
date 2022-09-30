@@ -1,12 +1,12 @@
 {
   "name": "pkmonjs",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "A package for use PokeAPi",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "install": "node ./test.js",
-    "test": "node ./test.js"
+    "install": "node ./dist/test.js",
+    "test": "node ./dist/test.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
   "dependencies": {
     "@types/jsdom": "^16.2.14",
     "axios": "^0.27.2",
-    "jsdom": "^20.0.0",
+    "jsdom": "^20.0.0"
+  },
+  "devDependencies": {
     "typescript": "^4.7.4"
   },
   "keywords": [

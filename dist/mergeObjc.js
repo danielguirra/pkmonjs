@@ -22,3 +22,4 @@ function mergeObjc(obj1, obj2) {
     return names;
 }
 exports.mergeObjc = mergeObjc;
+//# sourceMappingURL=mergeObjc.js.map

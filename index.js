@@ -1,1 +1,1 @@
-module.exports = require('./pokedex.js')
+module.exports = require("./dist/src/pokedex.js");

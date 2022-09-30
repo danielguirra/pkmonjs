@@ -2,12 +2,12 @@ import axios from 'axios';
 import fs from 'fs';
 import { JSDOM } from 'jsdom';
 
+import * as pokekex from './data/pokedex.json';
+import pokemonNames from './data/pokedexNames.json';
 import { getPokemonSpecies } from './getPokemonSpecies';
 import { getPokemonUrlImages } from './getPokemonUrlImages';
 import { getPokemonWeakeanes } from './getPokemonWeakeanes';
-import * as pokekex from './src/data/pokedex.json';
-import pokemonNames from './src/data/pokedexNames.json';
-import { Pokemon, PokemonArray, PokemonNamesArray, PokemonStatus, PokemonTypeSlot } from './src/interfaces/Pokemon';
+import { Pokemon, PokemonArray, PokemonNamesArray, PokemonStatus, PokemonTypeSlot } from './interfaces/Pokemon';
 
 export async function getPokemon(pokemonName: string | number) {
   let data;
