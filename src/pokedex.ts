@@ -1,9 +1,7 @@
 import axios from 'axios';
-import fs from 'fs';
+import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 
-import * as pokekex from './data/pokedex.json';
-import pokemonNames from './data/pokedexNames.json';
 import { getPokemonSpecies } from './getPokemonSpecies';
 import { getPokemonUrlImages } from './getPokemonUrlImages';
 import { getPokemonWeakeanes } from './getPokemonWeakeanes';
@@ -12,7 +10,7 @@ import { Pokemon, PokemonArray, PokemonNamesArray, PokemonStatus, PokemonTypeSlo
 export async function getPokemon(pokemonName: string | number) {
   let data;
   try {
-    data = JSON.parse(fs.readFileSync("./src/data/pokedex.json", "utf-8"));
+    data = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
     let dataFind: Pokemon = data.find(
       (pokeany: Pokemon) =>
         pokeany.idPokedex === pokemonName || pokeany.name === pokemonName
@@ -66,13 +64,15 @@ export async function getPokemon(pokemonName: string | number) {
     }
   }
 }
-export function getAllPokemonNames() {
-  const poke: any = pokemonNames;
+export async function getAllPokemonNames() {
+  const poke: any = JSON.parse(
+    readFileSync("./data/pokedexNames.json", "utf-8")
+  );
   const pokes: PokemonNamesArray = poke;
   return pokes;
 }
-export function getAllPokemon() {
-  const poke: any = pokekex;
+export async function getAllPokemon() {
+  const poke: any = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
   const pokes: PokemonArray = poke;
   return pokes;
 }

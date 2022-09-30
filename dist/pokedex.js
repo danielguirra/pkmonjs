@@ -4,8 +4,6 @@ exports.getAllPokemon = exports.getAllPokemonNames = exports.getPokemon = void 0
 const axios_1 = require("axios");
 const fs_1 = require("fs");
 const jsdom_1 = require("jsdom");
-const pokekex = require("./data/pokedex.json");
-const pokedexNames_json_1 = require("./data/pokedexNames.json");
 const getPokemonSpecies_1 = require("./getPokemonSpecies");
 const getPokemonUrlImages_1 = require("./getPokemonUrlImages");
 const getPokemonWeakeanes_1 = require("./getPokemonWeakeanes");
@@ -13,7 +11,7 @@ async function getPokemon(pokemonName) {
     var _a, _b, _c;
     let data;
     try {
-        data = JSON.parse(fs_1.default.readFileSync("./src/data/pokedex.json", "utf-8"));
+        data = JSON.parse((0, fs_1.readFileSync)("./data/pokedex.json", "utf-8"));
         let dataFind = data.find((pokeany) => pokeany.idPokedex === pokemonName || pokeany.name === pokemonName);
         return dataFind;
     }
@@ -59,14 +57,14 @@ async function getPokemon(pokemonName) {
     }
 }
 exports.getPokemon = getPokemon;
-function getAllPokemonNames() {
-    const poke = pokedexNames_json_1.default;
+async function getAllPokemonNames() {
+    const poke = JSON.parse((0, fs_1.readFileSync)("./data/pokedexNames.json", "utf-8"));
     const pokes = poke;
     return pokes;
 }
 exports.getAllPokemonNames = getAllPokemonNames;
-function getAllPokemon() {
-    const poke = pokekex;
+async function getAllPokemon() {
+    const poke = JSON.parse((0, fs_1.readFileSync)("./data/pokedex.json", "utf-8"));
     const pokes = poke;
     return pokes;
 }
