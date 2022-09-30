@@ -10,7 +10,13 @@ import { Pokemon, PokemonArray, PokemonNamesArray, PokemonStatus, PokemonTypeSlo
 export async function getPokemon(pokemonName: string | number) {
   let data;
   try {
-    data = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
+    try {
+      data = JSON.parse(
+        readFileSync("./node_modules/pkmonjs/data/pokedex.json", "utf-8")
+      );
+    } catch (error) {
+      data = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
+    }
     let dataFind: Pokemon = data.find(
       (pokeany: Pokemon) =>
         pokeany.idPokedex === pokemonName || pokeany.name === pokemonName
@@ -65,14 +71,27 @@ export async function getPokemon(pokemonName: string | number) {
   }
 }
 export async function getAllPokemonNames() {
-  const poke: any = JSON.parse(
-    readFileSync("./data/pokedexNames.json", "utf-8")
-  );
+  let poke;
+
+  try {
+    poke = JSON.parse(
+      readFileSync("./node_modules/pkmonjs/data/pokedexNames.json", "utf-8")
+    );
+  } catch (error) {
+    poke = JSON.parse(readFileSync("./data/pokedexNames.json", "utf-8"));
+  }
   const pokes: PokemonNamesArray = poke;
   return pokes;
 }
 export async function getAllPokemon() {
-  const poke: any = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
-  const pokes: PokemonArray = poke;
+  let data;
+  try {
+    data = JSON.parse(
+      readFileSync("./node_modules/pkmonjs/data/pokedex.json", "utf-8")
+    );
+  } catch (error) {
+    data = JSON.parse(readFileSync("./data/pokedex.json", "utf-8"));
+  }
+  const pokes: PokemonArray = data;
   return pokes;
 }
