@@ -23,6 +23,16 @@ exports.pokemonGenderRatio = [
         undefined: 0,
     },
     {
+        male: 50,
+        female: 50,
+        undefined: 0,
+    },
+    {
+        male: 35,
+        female: 65,
+        undefined: 0,
+    },
+    {
         male: 35,
         female: 65,
         undefined: 0,
@@ -30,6 +40,11 @@ exports.pokemonGenderRatio = [
     {
         male: 15,
         female: 85,
+        undefined: 0,
+    },
+    {
+        male: 0,
+        female: 100,
         undefined: 0,
     },
     {
