@@ -5,13 +5,18 @@ export const pokemonGenderRatio = [
     undefined: 0,
   },
   {
-    male: 85,
-    female: 15,
+    male: 87.5,
+    female: 12.5,
     undefined: 0,
   },
   {
-    male: 65,
-    female: 35,
+    male: 75,
+    female: 25,
+    undefined: 0,
+  },
+  {
+    male: 62.5,
+    female: 37.5,
     undefined: 0,
   },
   {
@@ -20,28 +25,18 @@ export const pokemonGenderRatio = [
     undefined: 0,
   },
   {
-    male: 50,
-    female: 50,
+    male: 37.5,
+    female: 62.5,
     undefined: 0,
   },
   {
-    male: 35,
-    female: 65,
+    male: 25,
+    female: 75,
     undefined: 0,
   },
   {
-    male: 35,
-    female: 65,
-    undefined: 0,
-  },
-  {
-    male: 15,
-    female: 85,
-    undefined: 0,
-  },
-  {
-    male: 0,
-    female: 100,
+    male: 12.5,
+    female: 87.5,
     undefined: 0,
   },
   {
