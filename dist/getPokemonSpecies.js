@@ -8,7 +8,7 @@ async function getPokemonSpecies(url) {
     const color = get.data.color;
     const eggGroup = get.data.egg_groups;
     if (get.data.gender_rate === -1)
-        get.data.gender_rate = 10;
+        get.data.gender_rate = 9;
     const genderRate = pokemonGenderRatio_1.pokemonGenderRatio[get.data.gender_rate];
     const isLegendary = get.data.is_legendary;
     const isMythical = get.data.is_mythical;
